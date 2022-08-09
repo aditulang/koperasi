@@ -13,5 +13,13 @@ class TypeController extends Controller
         $types = Type::all();
         return view('types.index', compact('types'));        
     }
- 
+    public function store(TypesRequest $request)
+    {
+
+        Type::create($request->all());
+
+        flash('Jenis pinjaman berhasil ditambahkan.');
+
+        return redirect()->route('types.index');
+    }
 }
