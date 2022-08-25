@@ -31,23 +31,30 @@ route::group(['prefix' => 'loans', 'namespace' => 'Loans'], function(){
     route::get('/', [LoanController::class, 'index'])->name('loans');
     route::get('submissions',[SubmissionController::class, 'index'])->name('submission.index');
 });
-route::group(['namespace'], function(){
+
+Route::group(['namespace'], function(){
     route::resource('types', 'TypeController');
 });
+
 Route::group(['prefix' =>'savings'],  function(){
     route::get('/anggota', 'Savings\SavingController@index')->name('savings.anggota');
 });
+
 Route::group(['prefix' => 'transaksi'], function(){
     route::get('/', 'TransaksiController@index')->name('transaksi');
 });
+
 Route::group(['prefix'=> 'installments', 'namespace'=>'Installments'], function(){
     route::get('/', 'InstallmentController@index')->name('installments.index');
 });
+
 Route::group(['prefix' => 'users', 'namespace' => 'Users'], function(){
     Route::get('pegawai','PegawaiController@index')->name('pegawai.index');
+    Route::post('/', 'UserController@store')->name('users.store');
     Route::get('anggota','AnggotaController@index')->name('anggota.index');
     Route::get('create', 'UserController@create')->name('users.create');
 });
+
 
 
 

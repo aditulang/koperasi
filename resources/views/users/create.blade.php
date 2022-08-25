@@ -6,7 +6,7 @@
     <div class="card">
         <h5 class="card-header">Formulir pengguna baru</h5>
         <div class="card-body">
-            <form action="#" method="post">
+            <form action="{{route('users.store')}}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-md-4">
@@ -66,9 +66,9 @@
                             <label for="roles">Akses:</label>
                             <select name="roles" id="roles" class="form-control">
                                 <option value="">Pleace select one</option>
-                               
-                                    <option value="#"></option>
-                                
+                                @foreach ($roles as $role)
+                                    <option value="{{$role}}">{{$role}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -77,11 +77,9 @@
                         <button type="submit" class="btn btn-outline-primary">
                             Simpan
                         </button>
-                        <a href="#">
-                            <button type="submit" class="btn btn-outline-secondary">
-                                Cancel
-                            </button>
-                        </a>
+                        <button type="submit" class="btn btn-outline-secondary">
+                            Cancel
+                        </button>
                     </div>
                 </div>
             </form>
