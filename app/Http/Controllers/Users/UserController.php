@@ -43,4 +43,28 @@ class UserController extends Controller
 
         return redirect()->route('anggota.index');
     }
+
+    public function edit($id)
+    {
+        $data = [
+            'pegawai'   => User::findOrFail($id),
+            'roles'     => Role::pluck('name', 'id'),
+        ];
+
+        return view('users.edit', $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $user = User::findOrFail($id);
+        $user->fill($request->except('roles'));
+
+        $user->save();
+        $user->syncRoles($request->get('roles'));
+
+        flash()->success('Data penguna berhasil di perbaharui');
+
+        return redirect()->route('anggota.index');
+    }
 }
