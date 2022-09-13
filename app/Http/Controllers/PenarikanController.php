@@ -17,7 +17,7 @@ class PenarikanController extends Controller
     {
         $tabungans = Saving::whereUserId(Auth::id())->with('penarikans')->get();
 
-        return view('user.tabungan.index', compact('tabungans'));
+        return view('user.tabungan.index', compact('savings'));
     }
 
     /**
