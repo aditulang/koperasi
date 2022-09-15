@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Loans;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use PDF;
 use App\Type;
 use App\Loan;
 use Nexmo\Laravel\Facade\Nexmo;
